@@ -3,3 +3,4 @@
 /dwm.o
 /util.o
 /compile_commands.json
+/.clangd
