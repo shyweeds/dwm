@@ -1,0 +1,5 @@
+If:
+  PathMatch: config.h
+CompileFlags:
+  CompilationDatabase: .
+  Add: [-include, dwm.c]
