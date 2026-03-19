@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 /* (my)Add system key libs */
 #include <X11/XF86keysym.h>
+#include "./colorscheme/colors-wal-dwm.h"
 #define BrightUp    XF86XK_MonBrightnessUp        /* Monitor/panel brightness */
 #define BrightDown  XF86XK_MonBrightnessDown      /* Monitor/panel brightness */
 
@@ -16,11 +17,12 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-};
+// my pawal16 define the colorscheme 
+//static const char *colors[][3]      = {
+//	/*               fg         bg         border   */
+//	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+//	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+//};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
