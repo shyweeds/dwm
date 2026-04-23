@@ -4,8 +4,8 @@
 #include "./colorscheme/colors-wal-dwm.h"
 #define BrightUp    XF86XK_MonBrightnessUp        /* Monitor/panel brightness */
 #define BrightDown  XF86XK_MonBrightnessDown      /* Monitor/panel brightness */
-#define VolumeUp    XF86XK_AudioLowerVolume       /*VolumeControl*/
-#define VolumeDown  XF86XK_AudioRaiseVolume       /*VolumeControl*/ 
+#define VolumeUp    XF86XK_AudioRaiseVolume       /*VolumeControl*/
+#define VolumeDown  XF86XK_AudioLowerVolume       /*VolumeControl*/ 
 #define VolumeMute  XF86XK_AudioMute              /*VolumeControl*/ 
 
 /* appearance */
