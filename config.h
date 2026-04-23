@@ -4,6 +4,9 @@
 #include "./colorscheme/colors-wal-dwm.h"
 #define BrightUp    XF86XK_MonBrightnessUp        /* Monitor/panel brightness */
 #define BrightDown  XF86XK_MonBrightnessDown      /* Monitor/panel brightness */
+#define VolumeUp    XF86XK_AudioLowerVolume       /*VolumeControl*/
+#define VolumeDown  XF86XK_AudioRaiseVolume       /*VolumeControl*/ 
+#define VolumeMute  XF86XK_AudioMute              /*VolumeControl*/ 
 
 /* appearance */
 static const unsigned int borderpx  = 5;        /* border pixel of windows */
@@ -68,13 +71,19 @@ static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufon
 static const char *termcmd[]    = { "kitty", NULL };
 static const char *brightup[]   = { "brightnessctl", "set", "+5%", NULL };
 static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
-static const char *PrintScr[] = { "flameshot", "gui", NULL };
+static const char *PrintScr[]   = { "flameshot", "gui", NULL };
+static const char *volumeup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+" };
+static const char *volumedown[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-" };
+static const char *volumemute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle" };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_c,      spawn,          {.v = PrintScr } },
 	{ 0,                            BrightUp,  spawn,          {.v = brightup } },
 	{ 0,                            BrightDown,spawn,          {.v = brightdown } },
+	{ 0,                            VolumeUp,  spawn,          {.v = volumeup } },
+	{ 0,                            VolumeDown,spawn,          {.v = volumedown } },
+	{ 0,                            VolumeMute,spawn,          {.v = volumemute } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
