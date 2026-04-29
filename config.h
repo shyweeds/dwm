@@ -72,8 +72,8 @@ static const char *termcmd[]    = { "kitty", NULL };
 static const char *brightup[]   = { "brightnessctl", "set", "+5%", NULL };
 static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *PrintScr[]   = { "flameshot", "gui", NULL };
-static const char *volumeup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+" };
-static const char *volumedown[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-" };
+static const char *volumeup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%+" };
+static const char *volumedown[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%-" };
 static const char *volumemute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle" };
 
 static const Key keys[] = {
