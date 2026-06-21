@@ -71,14 +71,14 @@ static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufon
 static const char *termcmd[]    = { "kitty", NULL };
 static const char *brightup[]   = { "brightnessctl", "set", "+5%", NULL };
 static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
-static const char *PrintScr[]   = { "flameshot", "gui", NULL };
 static const char *volumeup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%+" };
 static const char *volumedown[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%-" };
 static const char *volumemute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle" };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_c,      spawn,          {.v = PrintScr } },
+  { 0,                            XK_F2,     spawn,          SHCMD("${HOME}/dwm/scripts/screenshot.sh") },
+  { ShiftMask,                    XK_F2,     spawn,          SHCMD("${HOME}/dwm/scripts/screenshotsel.sh") },
 	{ 0,                            BrightUp,  spawn,          {.v = brightup } },
 	{ 0,                            BrightDown,spawn,          {.v = brightdown } },
 	{ 0,                            VolumeUp,  spawn,          {.v = volumeup } },
