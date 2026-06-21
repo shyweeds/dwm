@@ -69,21 +69,16 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]    = { "kitty", NULL };
-static const char *brightup[]   = { "brightnessctl", "set", "+5%", NULL };
-static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
-static const char *volumeup[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%+" };
-static const char *volumedown[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%-" };
-static const char *volumemute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle" };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
   { 0,                            XK_F2,     spawn,          SHCMD("${HOME}/dwm/scripts/screenshot.sh") },
   { ShiftMask,                    XK_F2,     spawn,          SHCMD("${HOME}/dwm/scripts/screenshotsel.sh") },
-	{ 0,                            BrightUp,  spawn,          {.v = brightup } },
-	{ 0,                            BrightDown,spawn,          {.v = brightdown } },
-	{ 0,                            VolumeUp,  spawn,          {.v = volumeup } },
-	{ 0,                            VolumeDown,spawn,          {.v = volumedown } },
-	{ 0,                            VolumeMute,spawn,          {.v = volumemute } },
+	{ 0,                            BrightUp,  spawn,          SHCMD("${HOME}/dwm/scripts/brightness.sh up") },
+	{ 0,                            BrightDown,spawn,          SHCMD("${HOME}/dwm/scripts/brightness.sh down") },
+	{ 0,                            VolumeUp,  spawn,          SHCMD("${HOME}/dwm/scripts/volume.sh up") },
+	{ 0,                            VolumeDown,spawn,          SHCMD("${HOME}/dwm/scripts/volume.sh down") },
+	{ 0,                            VolumeMute,spawn,          SHCMD("${HOME}/dwm/scripts/volume.sh mute") },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
