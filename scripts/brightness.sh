@@ -3,10 +3,10 @@
 # 执行亮度调节
 case "$1" in
     up)
-        brightnessctl set +5%
+        brightnessctl set +1%
         ;;
     down)
-        brightnessctl set 5%-
+        brightnessctl set 1%-
         ;;
 esac
 

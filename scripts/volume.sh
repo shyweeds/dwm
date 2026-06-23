@@ -3,10 +3,10 @@
 # 执行音量调节
 case "$1" in
     up)
-        pactl set-sink-volume @DEFAULT_SINK@ +5%
+        pactl set-sink-volume @DEFAULT_SINK@ +1%
         ;;
     down)
-        pactl set-sink-volume @DEFAULT_SINK@ -5%
+        pactl set-sink-volume @DEFAULT_SINK@ -1%
         ;;
     mute)
         pactl set-sink-mute @DEFAULT_SINK@ toggle
