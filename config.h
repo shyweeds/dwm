@@ -8,6 +8,7 @@
 #define VolumeDown    XF86XK_AudioLowerVolume       /*VolumeControl*/ 
 #define VolumeMute    XF86XK_AudioMute              /*VolumeControl*/ 
 #define AudioPlay     XF86XK_AudioPlay              /*AudioPlayStop control*/
+#define MicToggle     XF86XK_AudioMicMute           /*MicToggle Controler*/
 
 /* appearance */
 static const unsigned int borderpx  = 5;        /* border pixel of windows */
@@ -73,6 +74,7 @@ static const char *termcmd[]    = { "kitty", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+  { 0,                            MicToggle, spawn,          SHCMD("${HOME}/dwm/scripts/toggle_mic.sh")},
   { 0,                            AudioPlay, spawn,          SHCMD("${HOME}/dwm/scripts/audioplay.sh")},
   { 0,                            XK_F2,     spawn,          SHCMD("${HOME}/dwm/scripts/screenshot.sh") },
   { ShiftMask,                    XK_F2,     spawn,          SHCMD("${HOME}/dwm/scripts/screenshotsel.sh") },
