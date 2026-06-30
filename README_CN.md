@@ -31,7 +31,7 @@
 此仓库是基于 **dwm 6.8** 的个人构建版本，包含以下自定义修改：
 
 - 由 **pywal16** 驱动的动态配色方案
-- 媒体快捷键控制**亮度**和**音量**，配合 Dunst 通知
+- 媒体快捷键控制**亮度**、**音量**、**播放**和**麦克风**，配合 Dunst 通知
 - **截图**工具绑定到功能键
 - **真正全屏**补丁（使用 `_NET_WM_STATE_FULLSCREEN`，而非仅隐藏状态栏）
 - 默认终端为 **kitty**
@@ -45,10 +45,12 @@
 - Xinerama *(可选)*
 - libXft 和 fontconfig
 - `brightnessctl` — 亮度脚本所需
-- `pactl`（PipeWire/PulseAudio）— 音量脚本所需
+- `pactl`（PipeWire/PulseAudio）— 音量和麦克风脚本所需
 - `scrot` — 截图所需
 - `dunst` — 屏幕通知所需
-- `dmenu` — 应用启动器
+- `playerctl` — 媒体播放控制
+- `dmenu` — 应用菜单后端
+- `j4-dmenu-desktop` — 桌面应用启动器
 - `kitty` — 默认终端
 
 ---
@@ -111,7 +113,8 @@ exec dwm
 |----------------------|---------------------------|
 | `Mod + Return`       | 缩放 / 交换聚焦窗口         |
 | `Mod + Shift + Return` | 启动终端 (kitty)          |
-| `Mod + d`            | 启动 dmenu                 |
+| `Mod + d`            | 启动应用菜单                   |
+| `Mod + b`            | 切换状态栏显示                   |
 
 ### 窗口管理
 
@@ -168,6 +171,8 @@ exec dwm
 | `VolumeUp`           | 增加音量 (+5%)            |
 | `VolumeDown`         | 减少音量 (-5%)            |
 | `VolumeMute`         | 切换静音                  |
+| `AudioPlay`          | 播放 / 暂停媒体              |
+| `MicToggle`          | 切换麦克风静音                |
 | `Mod + Shift + e`    | 退出 dwm                  |
 
 ---
@@ -208,12 +213,17 @@ dwm/
 ├── patches/
 │   └── dwm-actualfullscreen-*.diff  # 全屏补丁
 ├── scripts/
-│   ├── brightness.sh       # 亮度控制 + 通知
-│   ├── volume.sh           # 音量控制 + 通知
-│   ├── screenshot.sh       # 全屏截图
-│   └── screenshotsel.sh    # 区域截图
+│   ├── audioplay.sh              # 媒体播放/暂停 + 通知
+│   ├── brightness.sh             # 亮度控制 + 通知
+│   ├── dmenucmd.sh               # 应用启动器 (j4-dmenu-desktop)
+│   ├── dunst_show_playerctl.sh   # Playerctl 状态通知
+│   ├── screenshot.sh             # 全屏截图
+│   ├── screenshotsel.sh          # 区域截图
+│   ├── toggle_mic.sh             # 麦克风静音切换 + 通知
+│   └── volume.sh                 # 音量控制 + 通知
 └── wallpaper/
-    └── 1.png               # 自定义壁纸
+    ├── 1.png                                  # 自定义壁纸
+    └── please_put_an_png_wallpaper_here.txt    # 壁纸说明
 ```
 
 ---
@@ -238,6 +248,9 @@ make clean install
 - **`layouts[]`** — 可用布局
 - **`mfact`** — 主区域宽度比例（默认 0.55）
 - **`borderpx`** — 窗口边框宽度
+- **`resizehints`** — 平铺调整时遵循窗口大小提示
+- **`lockfullscreen`** — 强制全屏窗口获取焦点
+- **`refreshrate`** — 窗口移动/调整刷新率
 
 ---
 

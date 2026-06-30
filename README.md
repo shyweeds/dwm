@@ -31,7 +31,7 @@
 This is a personal build of **dwm 6.8** with custom modifications:
 
 - Dynamic color scheme powered by **pywal16**
-- Media keys for **brightness** and **volume** control with Dunst notifications
+- Media keys for **brightness**, **volume**, **playback**, and **microphone** control with Dunst notifications
 - **Screenshot** utilities bound to function keys
 - **Actual fullscreen** patch (proper fullscreen without the statusbar)
 - **kitty** as the default terminal
@@ -45,10 +45,12 @@ This is a personal build of **dwm 6.8** with custom modifications:
 - Xinerama *(optional)*
 - libXft & fontconfig
 - `brightnessctl` — for brightness scripts
-- `pactl` (PipeWire/PulseAudio) — for volume scripts
+- `pactl` (PipeWire/PulseAudio) — for volume and microphone scripts
 - `scrot` — for screenshots
 - `dunst` — for on-screen notifications
-- `dmenu` — application launcher
+- `playerctl` — for media playback control
+- `dmenu` — application menu backend
+- `j4-dmenu-desktop` — desktop entry launcher
 - `kitty` — default terminal
 
 ---
@@ -111,7 +113,8 @@ The floating layout is automatically applied to dialog windows.
 |----------------------|---------------------------------|
 | `Mod + Return`       | Zoom / swap focused window      |
 | `Mod + Shift + Return` | Launch terminal (kitty)       |
-| `Mod + d`            | Launch dmenu                    |
+| `Mod + d`            | Launch application menu         |
+| `Mod + b`            | Toggle status bar               |
 
 ### Window Management
 
@@ -168,6 +171,8 @@ The floating layout is automatically applied to dialog windows.
 | `VolumeUp`           | Raise volume (+5%)              |
 | `VolumeDown`         | Lower volume (-5%)              |
 | `VolumeMute`         | Toggle mute                     |
+| `AudioPlay`          | Play / pause media              |
+| `MicToggle`          | Toggle microphone mute          |
 | `Mod + Shift + e`    | Quit dwm                        |
 
 ---
@@ -208,12 +213,17 @@ dwm/
 ├── patches/
 │   └── dwm-actualfullscreen-*.diff  # Fullscreen patch
 ├── scripts/
-│   ├── brightness.sh       # Brightness control + notification
-│   ├── volume.sh           # Volume control + notification
-│   ├── screenshot.sh       # Fullscreen screenshot
-│   └── screenshotsel.sh    # Area screenshot
+│   ├── audioplay.sh              # Media play/pause + notification
+│   ├── brightness.sh             # Brightness control + notification
+│   ├── dmenucmd.sh               # Application launcher (j4-dmenu-desktop)
+│   ├── dunst_show_playerctl.sh   # Playerctl status notification
+│   ├── screenshot.sh             # Fullscreen screenshot
+│   ├── screenshotsel.sh          # Area screenshot
+│   ├── toggle_mic.sh             # Microphone mute toggle + notification
+│   └── volume.sh                 # Volume control + notification
 └── wallpaper/
-    └── 1.png               # Custom wallpaper
+    ├── 1.png                                  # Custom wallpaper
+    └── please_put_an_png_wallpaper_here.txt    # Wallpaper instructions
 ```
 
 ---
@@ -238,6 +248,9 @@ Key areas you can tweak:
 - **`layouts[]`** — Available layouts
 - **`mfact`** — Master area width ratio (default 0.55)
 - **`borderpx`** — Window border width
+- **`resizehints`** — Respect size hints on tiled resize
+- **`lockfullscreen`** — Force focus on fullscreen window
+- **`refreshrate`** — Refresh rate for client move/resize
 
 ---
 
